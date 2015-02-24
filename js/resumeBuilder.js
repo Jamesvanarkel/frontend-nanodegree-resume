@@ -8,7 +8,7 @@ var bio = {
 			"email": "James.van.arkel@gmail.com",
 			"github": "@jamesvanarkel",
 			"twitter": "@jamesvanarkel",
-			"location": "Amsterdam"
+			"location": "Purmerend"
 		}
 	],
 	"welcomeMessage": "Welcome to my interactive resume",
@@ -29,8 +29,7 @@ var bio = {
 		"Ducth",
 		"English"
 	],
-	"biopic": "images/fry.jpg",
-	"display": "function taking no parameters"
+	"biopic": "images/fry.jpg"
 }
 
 var education = {
@@ -49,7 +48,7 @@ var education = {
 		},
 		{
 			"name": "Communication and Multimedia Design Amsterdam",
-			"location": "Amsterdam, the Netherlands",
+			"location": "Weesperplein, Amsterdam, the Netherlands",
 			"degree": "HBO",
 			"majors": [
 				"and",
@@ -67,8 +66,7 @@ var education = {
 			"dates": "2015 - recent",
 			"url": "https://www.udacity.com/course/nd001"
 		},
-	],
-	"display": "function taking no parameters"
+	]
 }
 
 var work = {
@@ -76,21 +74,21 @@ var work = {
 		{
 			"employer" : "Yellowbrick International",
 			"title" : "Application Front-End Developer",
-			"location" : "Amsterdam, the Netherlands",
+			"location" : "H.J.E wenckebachweg, Amsterdam, the Netherlands",
 			"dates": "02-03-2015 | Current ",
 			"description": "The company Brickparking changed it's name to Yellowbrick International. From now on I started a online course so I can fufill my new title as a Application Front-End developer. I will be working with Javascript, jQuery, HTML, CSS, SASS, Coffee and other Front-end languages."
 		},
 		{
 			"employer" : "Brick Parking",
 			"title" : "UI/UX DESIGNER",
-			"location" : "Amsterdam, the Netherlands",
+			"location" : "H.J.E wenckebachweg,Amsterdam, the Netherlands",
 			"dates": "01-08-2014 | 01-03-2015 ",
 			"description": "After my graduation I started working at Brickparking which is a sister company of Yellowbrick. Brickparking does most of the development for them. as a UI/UX designer at Brickparking i helped with several projects like the Banksy (Yellowbrick parking application) and Jon Snow(management tool for customers Yellowbrick). the role I played was mostly prototyping and design of the products. "
 		},
 		{
 			"employer" : "Gorealya",
 			"title" : "Co-Founder, Visual- and UX/UI designer",
-			"location" : "Amsterdam, the Netherlands",
+			"location" : "Nieuwemarkt, Amsterdam, the Netherlands",
 			"dates": " 01-01-2012 | Current",
 			"description": "Gorealya Amsterdam Tribe. A clothing line started by three students. As a UI/UX designer I work on the webshop, service design of getting the product to the customer, the designs for the shirts, branding, storytelling and building the experience around the brand."
 		},
@@ -101,8 +99,7 @@ var work = {
 			"dates": " 01-02-2014 | 01-08-2014",
 			"description": "Gorealya Amsterdam Tribe. A clothing line started by three students. As a UI/UX designer I work on the webshop, service design of getting the product to the customer, the designs for the shirts, branding, storytelling and building the experience around the brand."
 		}
-	],
-	"display": "function taking no parameters"
+	]
 }
 
 var projects ={
@@ -119,8 +116,7 @@ var projects ={
 			"description": "asdjiasd",
 			"images" : " "
 		}
-	],
-	"display": "function taking no parameters"
+	]
 }
 
 //Starting imports from top to bottom
@@ -139,21 +135,20 @@ function displayBio(){
 
 		$("#header").append(formattedSkills);
 	}
+
 	function displayContact(){
 
-		var formattedEmail = HTMLemail.replace("%data%", bio.contacts);
-		var formattedMobile	= HTMLmobile.replace("%data%", bio.contacts.mobile);
-		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-		var formattedBlog = HTMLblog.replace("%data%", bio.contacts.blog);
-		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+		var formattedMobile	= HTMLmobile.replace("%data%", bio.contacts[0].mobile);
+		var formattedEmail = HTMLemail.replace("%data%", bio.contacts[0].email);
+		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts[0].github);
+		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts[0].twitter);
+		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts[0].location);
 
-		var formattedContact = formattedMobile + formattedMobile + formattedTwitter + formattedGithub + formattedBlog + formattedLocation;
-		$("#topContacts").append(formattedContact);
+		var formattedContact = formattedEmail + formattedMobile + formattedTwitter + formattedGithub  + formattedLocation;
+		$("#topContacts,#footerContacts").append(formattedContact);
 
 	}
 	displayContact();
-
 }
 displayBio();
 
@@ -178,7 +173,6 @@ function displayEducation(){
 }
 displayEducation();
 
-
 function displayOnline(){
 	for(online in education.onlineCourses){
 		$("#education:last").append(HTMLonlineClasses);
@@ -189,7 +183,7 @@ function displayOnline(){
 		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[online].title);
 		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[online].dates);
 
-		var formattedOnline = formattedOnlineSchool + formattedOnlineDates + formattedOnlineTitle;
+		var formattedOnline = formattedOnlineTitle + formattedOnlineSchool + formattedOnlineDates;
 
 		$(".education-entry:last").append(formattedOnline);
 
@@ -219,8 +213,6 @@ function displayWork(){
 }
 displayWork()
 
-
-
 function displayProjects() {
 	for (project in projects.projects){
 		$("#projects").append(HTMLprojectStart);
@@ -243,3 +235,17 @@ function displayProjects() {
 	}
 }
 displayProjects();
+
+function inName(){
+	var name = bio.name;
+	name = name.split(" ");
+	name[0] = name[0].slice(0 , 1).toUpperCase() + name[0].slice(1).toLowerCase();
+	name[1] = name[1].toLowerCase();
+	name[2] = name[2].toUpperCase();
+
+	return name[0] + " " + name[1] + " " + name[2];
+}
+
+$("#header").append(internationalizeButton);
+
+$("#mapDiv").append(googleMap);
