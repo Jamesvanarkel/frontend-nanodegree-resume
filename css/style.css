@@ -1,9 +1,13 @@
+
 * {
   padding:0;
   margin:0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
 }
-
+body{
+  background-color:rgb(245,245,245);
+}
 .clearfix {
   overflow: auto;
 }
@@ -14,7 +18,9 @@
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 115%;
+  text-align: center;
+  letter-spacing: 3px;
   color: #F5A623;
   line-height: 48px;
   display: inline;
@@ -22,12 +28,16 @@ h1 {
 
 h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 30px;
   color: #999999;
   line-height: 29px;
   padding: 10px;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
 }
-
+#header img{
+  border-radius: 213px;
+}
 h3 {
   font-style: italic;
   font-size: 20px;
@@ -97,11 +107,21 @@ a {
 
 .orange-text {
   color: #F5AE23;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+#topContacts{
+  width: 100%;
+  overflow:hidden;
+  text-align: center;
 }
 
 .white-text {
   font-weight: bold;
-  color: #FFFFFF;
+  color: black;
+
+  font-size: 80%;
+  display: flex;
 }
 
 .gray {
@@ -115,10 +135,6 @@ a {
 }
 
 /* TODO: Replace with image later */
-#header {
-  background-color: #484848;
-}
-
 .flex-box {
   display: -webkit-flex;
   display: flex;
@@ -212,4 +228,20 @@ span {
   .biopic {
     display: block;
   }
+}
+#header {
+  background-color: transparent;
+  float: left;
+  border-right:1px solid rgb(213, 212, 208);
+  width: 30%;
+  position: absolute;
+}
+#workExperience, #projects, #education{
+  float:right;
+  position: relative;
+  width: 70%;
+}
+#mapDiv, #letsConnect{
+  float:left;
+  width:100%;
 }

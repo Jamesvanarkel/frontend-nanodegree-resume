@@ -29,7 +29,7 @@ var bio = {
 		"Ducth",
 		"English"
 	],
-	"biopic": "images/fry.jpg"
+	"biopic": "images/fry.png"
 }
 
 var education = {
@@ -121,19 +121,21 @@ var projects ={
 
 //Starting imports from top to bottom
 function displayBio(){
-	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 	var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
 
-	var headerInfo = formattedName + formattedRole + formattedBioPic + formattedMessage;
+	var headerInfo = formattedRole  + formattedMessage;
+	var firstHeaderInfo = formattedBioPic + formattedName;
 	$("#header").append(headerInfo);
+	$("#header").prepend(firstHeaderInfo);
 	$("#header").append(HTMLskillsStart);
 
 	for (skill in bio.skills){
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
 
-		$("#header").append(formattedSkills);
+		$("#skills").append(formattedSkills);
 	}
 
 	function displayContact(){
@@ -249,3 +251,81 @@ function inName(){
 $("#header").append(internationalizeButton);
 
 $("#mapDiv").append(googleMap);
+
+function appendIcons(){
+	//Finding and adding the icon building to the H2 of workexperience
+	var iconWorkExperienceHeader = $("#workExperience").children("h2");
+	iconWorkExperienceHeader.prepend('<i class="fa fa-building-o"></i> ');
+
+	//Finding and adding the icon building to the H2 of Projects
+	var iconProjectHeader = $("#projects").children("h2");
+	iconProjectHeader.prepend('<i class="fa fa-briefcase"></i> ');
+
+	//Finding and adding the icon building to the H2 of Education
+	var iconEducationHeader = $("#education").children("h2");
+	iconEducationHeader.prepend('<i class="fa fa-book"></i> ');
+
+	//Finding and adding the icon building to the H2 of where i worked and lived
+	var iconMapHeader = $("#mapDiv").children("h2");
+	iconMapHeader.prepend('<i class="fa fa-compass"></i> ');
+}
+appendIcons();
+
+function appendRatings(){
+	//for every item in the array "Skills" there should be a circle rating from 0 -> 5 of how the experience is in this function
+	skillItem = $("#skills").children(".flex-item");
+	console.log(skillItem);
+
+	function giveRatings(){
+		var skillArray = $("#skills").find("li:first-child");
+		//being awesome
+		skillArray = skillArray.attr("class", "fiveRating");
+		//"Photoshop",
+		skillArray = skillArray.next().attr("class", "fourRating");
+		//"Indesign",
+		skillArray = skillArray.next().attr("class", "threeRating");
+		//"Illustrator",
+		skillArray = skillArray.next().attr("class", "oneRating");
+		//"HTML5",
+		skillArray = skillArray.next().attr("class", "twoRating");
+		//"CSS3",
+		skillArray = skillArray.next().attr("class", "fourRating");
+		//"PHP",
+		skillArray = skillArray.next().attr("class", "oneRating");
+		//"SQL",
+		skillArray = skillArray.next().attr("class", "fourRating");
+		//"jQuery",
+		skillArray = skillArray.next().attr("class", "fourRating");
+		//"Javascript",
+		skillArray = skillArray.next().attr("class", "fourRating");
+		//"Fireworks",
+		skillArray = skillArray.next().attr("class", "fourRating");
+		//"Aftereffects",
+		skillArray = skillArray.next().attr("class", "threeRating");
+		//"Premiere",
+		skillArray = skillArray.next().attr("class", "fiveRating");
+		//"Ducth",
+		skillArray = skillArray.next().attr("class", "fiveRating");
+		//"English"
+		skillArray = skillArray.next().attr("class", "fiveRating");
+
+
+		$('.fiveRating').each( function (index, data) {
+   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i>');
+		});
+		$('.fourRating').each( function (index, data) {
+   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i>');
+		});
+		$('.threeRating').each( function (index, data) {
+   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i>');
+		});
+		$('.twoRating').each( function (index, data) {
+   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i>');
+		});
+		$('.oneRating').each( function (index, data) {
+   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i>');
+		});
+	}
+	giveRatings();
+}
+appendRatings();
