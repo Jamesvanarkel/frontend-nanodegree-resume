@@ -11,9 +11,9 @@ var bio = {
 			"location": "Purmerend"
 		}
 	],
-	"welcomeMessage": "Welcome to my interactive resume",
+	"welcomeMessage": "Curriculum Vitae",
 	"skills":[
-		"Being AWESOME",
+		"Awesomeness",
 		"Photoshop",
 		"Indesign",
 		"Illustrator",
@@ -126,12 +126,12 @@ function displayBio(){
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
 
-	var headerInfo = formattedRole  + formattedMessage;
+	var headerInfo = formattedRole;
 	var firstHeaderInfo = formattedBioPic + formattedName;
 	$("#header").append(headerInfo);
 	$("#header").prepend(firstHeaderInfo);
 	$("#header").append(HTMLskillsStart);
-
+	$("#workExperience").prepend(formattedMessage);
 	for (skill in bio.skills){
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
 
@@ -311,19 +311,19 @@ function appendRatings(){
 
 
 		$('.fiveRating').each( function (index, data) {
-   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i>');
+   			 $(this).append('<span class="rating"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></span>');
 		});
 		$('.fourRating').each( function (index, data) {
-   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i>');
+   			 $(this).append('<span class="rating"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i></span>');
 		});
 		$('.threeRating').each( function (index, data) {
-   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i>');
+   			 $(this).append('<span class="rating"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i></span>');
 		});
 		$('.twoRating').each( function (index, data) {
-   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i>');
+   			 $(this).append('<span class="rating"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i></span>');
 		});
 		$('.oneRating').each( function (index, data) {
-   			 $(this).append('<i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i>');
+   			 $(this).append('<span class="rating"><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i><i class="fa fa-circle-o"></i></span>');
 		});
 	}
 	giveRatings();
