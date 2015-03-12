@@ -30,7 +30,7 @@ var bio = {
 		"English"
 	],
 	"biopic": "images/fry.png"
-}
+};
 
 var education = {
 	"schools":[
@@ -67,7 +67,7 @@ var education = {
 			"url": "https://www.udacity.com/course/nd001"
 		},
 	]
-}
+};
 
 var work = {
 	"jobs" : [
@@ -100,7 +100,7 @@ var work = {
 			"description": "Gorealya Amsterdam Tribe. A clothing line started by three students. As a UI/UX designer I work on the webshop, service design of getting the product to the customer, the designs for the shirts, branding, storytelling and building the experience around the brand."
 		}
 	]
-}
+};
 
 var projects ={
 	"projects": [
@@ -117,7 +117,7 @@ var projects ={
 			"images" : " "
 		}
 	]
-}
+};
 
 //Starting imports from top to bottom
 function displayBio(){
@@ -213,7 +213,7 @@ function displayWork(){
 		$(".work-entry:last").append(formattedJobContent);
 	}
 }
-displayWork()
+displayWork();
 
 function displayProjects() {
 	for (project in projects.projects){
